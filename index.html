@@ -5,27 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IIT PATNA - Nahil RajeshKumar Gajbhiye</title>
     <style>
-        /* General Body Styling */
+        /* Background Styling */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f8ff;
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            flex-direction: column;
+            background: linear-gradient(135deg, #f0f8ff, #dfe6e9);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #2c3e50;
+            text-align: center;
         }
 
-        /* Container for the Profile */
+        /* Container Styling */
         .container {
             max-width: 900px;
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255, 255, 255, 0.95);
+            margin: 20px auto;
             padding: 20px 30px;
             border-radius: 15px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-            text-align: center;
+            position: relative;
         }
 
         h1 {
@@ -33,6 +31,19 @@
             font-size: 36px;
         }
 
+        h2 {
+            color: #0984e3;
+            border-bottom: 3px solid #74b9ff;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        p, li {
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        /* Personal Info Box */
         .info {
             background: linear-gradient(90deg, #ff9a9e, #fad0c4);
             padding: 15px;
@@ -53,6 +64,41 @@
             margin: 8px 0;
             padding: 10px;
             border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        ul li:hover {
+            background: #0984e3;
+        }
+
+        /* Skills Section */
+        .skills {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 20px 0;
+        }
+
+        .skill {
+            background: #00cec9;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 20px;
+            transition: background 0.3s;
+        }
+
+        .skill:hover {
+            background: #0984e3;
+        }
+
+        /* Great Ideals Section */
+        .ideals {
+            background: linear-gradient(90deg, #ffeaa7, #fab1a0);
+            padding: 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            margin: 20px 0;
         }
 
         footer {
@@ -60,23 +106,22 @@
             color: white;
             padding: 10px;
             border-radius: 0 0 15px 15px;
-            margin-top: 20px;
         }
 
         /* Ashoka Chakra Design */
         .chakra {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            border: 8px solid #1a73e8;  /* Blue border like the original chakra */
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 120px;
+            border: 5px solid #1a73e8;
             border-radius: 50%;
-            margin: 20px auto;
+            background: white;
         }
 
-        /* Spokes of the Ashoka Chakra */
-        .chakra::before,
-        .chakra::after {
-            content: '';
+        .chakra .spoke {
             position: absolute;
             top: 50%;
             left: 50%;
@@ -86,36 +131,30 @@
             transform-origin: center;
         }
 
-        /* Multiple spokes using CSS animation */
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .chakra::before {
-            transform: rotate(0deg);
-            animation: rotate 10s linear infinite;
-        }
-
-        .chakra::after {
-            transform: rotate(90deg);
-            animation: rotate 10s linear infinite reverse;
-        }
-
-        /* Additional Spokes */
-        .spoke {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 90%;
-            height: 2px;
-            background-color: #1a73e8;
-            transform-origin: center;
-        }
-
-        /* Adding 24 spokes */
+        /* Adding 24 Spokes */
         .chakra .spoke {
             transform: rotate(calc(15deg * var(--i)));
+        }
+
+        /* Ashoka Stambha Base */
+        .stambha {
+            width: 50px;
+            height: 150px;
+            background: #d35400;
+            margin: 10px auto;
+            border-radius: 5px 5px 0 0;
+            position: relative;
+        }
+
+        .stambha::before {
+            content: '';
+            width: 70px;
+            height: 20px;
+            background: #c0392b;
+            position: absolute;
+            top: -20px;
+            left: -10px;
+            border-radius: 5px 5px 0 0;
         }
 
     </style>
@@ -126,7 +165,8 @@
     <div class="chakra">
         <!-- Adding 24 spokes dynamically -->
         <script>
-            const chakra = document.querySelector('.chakra');
+            const chakra = document.querySelector('.chakra') || document.body.appendChild(document.createElement('div'));
+            chakra.className = 'chakra';
             for (let i = 0; i < 24; i++) {
                 const spoke = document.createElement('div');
                 spoke.className = 'spoke';
@@ -136,23 +176,22 @@
         </script>
     </div>
 
-    <!-- Profile Information -->
+    <!-- Main Profile Section -->
     <div class="container">
         <h1>IIT PATNA</h1>
         <div class="info">
             <p><strong>Name:</strong> Nahil RajeshKumar Gajbhiye</p>
-            <p><strong>College:</strong> Indian Institute of Technology (IIT) Patna</p>
-            <p><strong>CPI:</strong> 8.17</p>
+            <p><strong>Age:</strong> 21</p>
+            <p><strong>Course:</strong> BS (Hons.) Computer Science and Data Analytics (2023 - 2026)</p>
         </div>
 
         <h2>About Me</h2>
         <p>
             I am a dedicated student currently pursuing a BS (Hons.) in Computer Science and Data Analytics at IIT Patna. 
             My academic journey has been filled with exciting challenges and opportunities, shaping my passion for technology 
-            and problem-solving.
+            and problem-solving. Prior to joining IIT Patna, I secured admissions to several well-regarded institutions:
         </p>
 
-        <h2>Admissions Secured</h2>
         <ul>
             <li>NIT Rourkela - B.Sc+M.Sc. Life Science Integrated (JEE Mains 2022)</li>
             <li>Kalinga University - Bachelor of Design (UX Design) (2022)</li>
@@ -160,7 +199,29 @@
             <li>Kavi Kulguru Institute - B.E. in Computer Technology (2021)</li>
         </ul>
 
-        <footer>© 2025 Nahil RajeshKumar Gajbhiye | IIT Patna</footer>
+        <p>These diverse experiences have reinforced my commitment to continuous learning, helping me grow both academically and personally.</p>
+
+        <h2>Skills</h2>
+        <div class="skills">
+            <div class="skill">Draw.io</div>
+            <div class="skill">Microsoft Office</div>
+            <div class="skill">Google Colab</div>
+            <div class="skill">WPS Office</div>
+            <div class="skill">HTML</div>
+            <div class="skill">CSS</div>
+        </div>
+
+        <h2>My Greatest Ideals</h2>
+        <div class="ideals">
+            Dr. B.R. Ambedkar | Shakyamuni Buddha | Ashoka The Great
+        </div>
+
+        <!-- Ashoka Stambha Representation -->
+        <div class="stambha"></div>
+
+        <footer>
+            © 2025 Nahil RajeshKumar Gajbhiye | IIT Patna
+        </footer>
     </div>
 
 </body>
